@@ -39,7 +39,7 @@
         ],
         "brandColor": "#C83E14",
         "composerIcon": "./assets/icon.png",
-        "logo": "./assets/logo.png"
+        "logo": "./assets/icon.png"
       },
       "review": {
         "test_cases": {
