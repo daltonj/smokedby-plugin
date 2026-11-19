@@ -1,0 +1,112 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "smokedby",
+  "version": "1.0.0",
+  "description": "Restaurant and bar picks by city, with the chef and critic quotes behind each.",
+  "author": {
+    "name": "Jeff Dalton",
+    "url": "https://smokedby.ai/about"
+  },
+  "homepage": "https://smokedby.ai",
+  "repository": "https://github.com/daltonj/smokedby-plugin",
+  "keywords": [
+    "restaurants",
+    "bars",
+    "food",
+    "travel",
+    "recommendations"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Smoked by AI",
+        "shortDescription": "Restaurant picks, with sources",
+        "longDescription": "Smoked by AI is one cook's restaurant and bar guide. Each pick is written up with what to order and the chefs and critics who vouch for it, quoted and linked. Ask where to eat brisket in Austin, where Romans go for carbonara, or what is open late in Glasgow. The answer comes from the guide's own entries, with a source for every claim, and it says so when a city is thinly covered. It reads public data and needs no account. Three tools send something back to the guide: a wrong fact, a pick you used, or a place it lacks.",
+        "developerName": "Jeff Dalton",
+        "category": "Food & Drink",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://smokedby.ai",
+        "supportURL": "https://smokedby.ai/support",
+        "privacyPolicyURL": "https://smokedby.ai/privacy",
+        "termsOfServiceURL": "https://smokedby.ai/terms",
+        "defaultPrompt": [
+          "Where should I eat brisket in Austin?",
+          "A romantic dinner in Rome near Trastevere.",
+          "Late-night food in Glasgow."
+        ],
+        "brandColor": "#C83E14",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "A dish in a covered city",
+              "prompt": "Where should I eat brisket in Austin?",
+              "tools_triggered": [
+                "recommend",
+                "fetch"
+              ],
+              "expected_behavior": "Names Austin barbecue rooms from the guide, Franklin Barbecue among them, says what to order at each, and links each pick to its page on smokedby.ai."
+            },
+            {
+              "description": "An occasion in a neighbourhood",
+              "prompt": "A romantic dinner in Rome near Trastevere.",
+              "tools_triggered": [
+                "recommend",
+                "fetch"
+              ],
+              "expected_behavior": "Names rooms in or near Trastevere from the guide's Rome list, with what to order and how hard each is to book, and links each to its page."
+            },
+            {
+              "description": "What the guide covers",
+              "prompt": "Which cities does Smoked by AI cover?",
+              "tools_triggered": [
+                "list_cities"
+              ],
+              "expected_behavior": "Lists the cities the guide covers and says which have few written entries."
+            },
+            {
+              "description": "One room in full",
+              "prompt": "What do chefs say about St. John in London?",
+              "tools_triggered": [
+                "search",
+                "fetch"
+              ],
+              "expected_behavior": "Finds St. John in London and quotes the chefs and critics its entry cites, each with a source link."
+            },
+            {
+              "description": "An occasion in a city",
+              "prompt": "Late-night food in Glasgow.",
+              "tools_triggered": [
+                "recommend",
+                "list_by_situation",
+                "fetch"
+              ],
+              "expected_behavior": "Names Glasgow rooms the guide tags as late-night, with the written answer where there is one."
+            }
+          ],
+          "negative": [
+            {
+              "description": "A booking, which the guide cannot make",
+              "prompt": "Book me a table at Uchi for Friday at 8."
+            },
+            {
+              "description": "A question that is not about food or drink places",
+              "prompt": "What's the weather in Austin this weekend?"
+            },
+            {
+              "description": "A recipe, which the guide does not hold",
+              "prompt": "Write a recipe for carbonara."
+            }
+          ]
+        },
+        "commerce": false
+      }
+    }
+  }
+}

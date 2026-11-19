@@ -1,0 +1,16 @@
+{
+  "name": "smokedby",
+  "owner": {
+    "name": "Jeff Dalton"
+  },
+  "metadata": {
+    "description": "The Smoked by AI restaurant and bar guide, as a plugin."
+  },
+  "plugins": [
+    {
+      "name": "smokedby",
+      "source": "./plugin",
+      "description": "Restaurant and bar picks by city, with the chef and critic quotes behind each."
+    }
+  ]
+}

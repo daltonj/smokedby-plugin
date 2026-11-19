@@ -1,0 +1,11 @@
+{
+  "name": "smokedby",
+  "version": "1.0.0",
+  "description": "Restaurant and bar picks by city, with the chef and critic quotes behind each.",
+  "author": {
+    "name": "Jeff Dalton"
+  },
+  "homepage": "https://smokedby.ai",
+  "repository": "https://github.com/daltonj/smokedby-plugin",
+  "mcpServers": "./.mcp.json"
+}

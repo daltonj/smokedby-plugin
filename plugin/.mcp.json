@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "smokedby": {
+      "type": "http",
+      "url": "https://smokedby.ai/api/mcp"
+    }
+  }
+}
